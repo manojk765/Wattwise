@@ -95,18 +95,22 @@ FIREBASE_PROJECT_ID=your_firebase_project_id
 FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
 FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 FIREBASE_APP_ID=your_firebase_app_id
+
+# Gemini API Configuration
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
 > ⚠️ **Important**: 
 > - Never commit your `.env` file to version control
 > - The `.env` file is already included in `.gitignore`
 > - Use `.env.example` as a template for required variables
-> - Keep your Firebase credentials secure
+> - Keep your Firebase and Gemini API credentials secure
 
 ### Getting Environment Variables
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
 2. Get your Firebase configuration from your project settings
-3. For production deployment, ensure all environment variables are properly configured
+3. Get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+4. For production deployment, ensure all environment variables are properly configured
 
 
 ### Installation Options

@@ -2,7 +2,7 @@
 
 // Gemini API key - never expose this in client-side code in a production app
 // In a real app, this should be stored in a secure environment variable
-export const GEMINI_API_KEY = 'AIzaSyDt9nQwhVtbHl3yYQDiXhWF4jENA0wg8h8';
+export const GEMINI_API_KEY =process.env.GEMINI_API_KEY;
 
 // Application configuration
 export const APP_CONFIG = {
