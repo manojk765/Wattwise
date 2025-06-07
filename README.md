@@ -1,6 +1,6 @@
 # WattWise - Smart Energy Management App
 
-![WattWise Logo](assets/images/icon.png)
+<img src="assets/images/icon.png" alt="WattWise Logo" width="200" height="200" />
 
 ## Overview
 WattWise is a comprehensive energy management application built with React Native and Expo. Developed by Team Greenovators, this sustainable app helps users track their energy consumption, optimize usage patterns, and save on electricity bills through intelligent monitoring and personalized recommendations. Our project won the Second Prize in the Sustainable App Development competition, recognizing our commitment to promoting energy efficiency and environmental sustainability.
