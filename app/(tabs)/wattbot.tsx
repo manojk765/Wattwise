@@ -206,7 +206,7 @@ export default function WattBotScreen() {
         
         <View style={styles.chatContainer}>
           <FlatList
-            ref={flatListRef}
+            // ref={flatListRef as any}
             data={chatHistory}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (

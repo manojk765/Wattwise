@@ -54,63 +54,63 @@ const ApplianceCard: React.FC<ApplianceCardProps> = ({
   
   return (
     <>
-      <TouchableOpacity
-        style={[
-          styles.container,
-          { backgroundColor: isDark ? colors.cardDark : colors.card }
-        ]}
-        onPress={onPress}
-      >
-        <View style={styles.iconContainer}>
-          {getIcon()}
+    <TouchableOpacity
+      style={[
+        styles.container,
+        { backgroundColor: isDark ? colors.cardDark : colors.card }
+      ]}
+      onPress={onPress}
+    >
+      <View style={styles.iconContainer}>
+        {getIcon()}
+      </View>
+      
+      <View style={styles.contentContainer}>
+        <View style={styles.nameContainer}>
+          <Text style={[styles.name, { color: isDark ? colors.textDark : colors.text }]}>
+            {appliance.name}
+          </Text>
+          <View style={[
+            styles.statusBadge,
+            { backgroundColor: appliance.status === 'active' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255, 152, 0, 0.1)' }
+          ]}>
+            <Text style={[
+              styles.statusText,
+              { color: appliance.status === 'active' ? colors.success : colors.warning }
+            ]}>
+              {appliance.status === 'active' ? 'Active' : 'Inactive'}
+            </Text>
+          </View>
         </View>
         
-        <View style={styles.contentContainer}>
-          <View style={styles.nameContainer}>
-            <Text style={[styles.name, { color: isDark ? colors.textDark : colors.text }]}>
-              {appliance.name}
+        <Text style={[styles.details, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
+          {appliance.brand} {appliance.model}
+        </Text>
+        
+        <View style={styles.statsContainer}>
+          <View style={styles.stat}>
+            <Zap size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
+            <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
+              {appliance.wattage}W
             </Text>
-            <View style={[
-              styles.statusBadge,
-              { backgroundColor: appliance.status === 'active' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255, 152, 0, 0.1)' }
-            ]}>
-              <Text style={[
-                styles.statusText,
-                { color: appliance.status === 'active' ? colors.success : colors.warning }
-              ]}>
-                {appliance.status === 'active' ? 'Active' : 'Inactive'}
-              </Text>
-            </View>
           </View>
           
-          <Text style={[styles.details, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
-            {appliance.brand} {appliance.model}
-          </Text>
+          <View style={styles.stat}>
+            <Clock size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
+            <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
+              {appliance.hoursPerDay}h/day
+            </Text>
+          </View>
           
-          <View style={styles.statsContainer}>
-            <View style={styles.stat}>
-              <Zap size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
-              <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
-                {appliance.wattage}W
-              </Text>
-            </View>
-            
-            <View style={styles.stat}>
-              <Clock size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
-              <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
-                {appliance.hoursPerDay}h/day
-              </Text>
-            </View>
-            
-            <View style={styles.stat}>
-              <DollarSign size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
-              <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
+          <View style={styles.stat}>
+            <DollarSign size={16} color={isDark ? colors.textSecondaryDark : colors.textSecondary} />
+            <Text style={[styles.statValue, { color: isDark ? colors.textDark : colors.text }]}>
                 ₹{metrics.monthlyCost.toFixed(0)}/mo
-              </Text>
-            </View>
+            </Text>
           </View>
         </View>
-
+      </View>
+      
         <View style={styles.actionsContainer}>
           <TouchableOpacity
             style={[styles.actionButton, { backgroundColor: isDark ? colors.cardDark : colors.card }]}

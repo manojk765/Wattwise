@@ -34,7 +34,7 @@ export default function AnalyticsScreen() {
     cost: totalUsage.cost / filteredUsage.length || 0,
     co2: totalUsage.co2 / filteredUsage.length || 0,
   };
-
+  
   const getTrendIcon = (value: number) => {
     return value < 0 ? (
       <TrendingDown size={20} color={colors.success} />
@@ -45,8 +45,8 @@ export default function AnalyticsScreen() {
 
   return (
     <View style={[
-      styles.container,
-      { backgroundColor: isDark ? colors.backgroundDark : colors.background }
+        styles.container,
+        { backgroundColor: isDark ? colors.backgroundDark : colors.background }
     ]}>
       <Header title="Analytics" />
       
@@ -63,7 +63,7 @@ export default function AnalyticsScreen() {
             <Text style={[
               styles.timeRangeText,
               timeRange === 'week' && styles.timeRangeTextActive,
-              { color: isDark ? colors.textDark : colors.text }
+                { color: isDark ? colors.textDark : colors.text }
             ]}>
               Week
             </Text>
@@ -103,8 +103,8 @@ export default function AnalyticsScreen() {
               <Text style={[styles.statLabel, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
                 Total Usage
               </Text>
-            </View>
-            
+      </View>
+      
             <View style={styles.statItem}>
               <View style={[styles.statIcon, { backgroundColor: `${colors.primary}20` }]}>
                 <DollarSign size={24} color={colors.primary} />
@@ -115,8 +115,8 @@ export default function AnalyticsScreen() {
               <Text style={[styles.statLabel, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
                 Total Cost
               </Text>
-            </View>
-            
+      </View>
+      
             <View style={styles.statItem}>
               <View style={[styles.statIcon, { backgroundColor: `${colors.primary}20` }]}>
                 <Leaf size={24} color={colors.primary} />
@@ -126,13 +126,13 @@ export default function AnalyticsScreen() {
               </Text>
               <Text style={[styles.statLabel, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
                 Total CO₂
-              </Text>
+        </Text>
             </View>
           </View>
-        </View>
-
+      </View>
+      
         <View style={[styles.card, { backgroundColor: isDark ? colors.cardDark : colors.card }]}>
-          <Text style={[styles.sectionTitle, { color: isDark ? colors.textDark : colors.text }]}>
+        <Text style={[styles.sectionTitle, { color: isDark ? colors.textDark : colors.text }]}>
             Daily Average
           </Text>
           
@@ -161,7 +161,7 @@ export default function AnalyticsScreen() {
               </Text>
               <Text style={[styles.statLabel, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
                 CO₂
-              </Text>
+          </Text>
             </View>
           </View>
         </View>
@@ -179,7 +179,7 @@ export default function AnalyticsScreen() {
             isDark={isDark}
           />
         </View>
-
+        
         <View style={[styles.card, { backgroundColor: isDark ? colors.cardDark : colors.card }]}>
           <Text style={[styles.sectionTitle, { color: isDark ? colors.textDark : colors.text }]}>
             Monthly Comparison
@@ -206,7 +206,7 @@ export default function AnalyticsScreen() {
             <View style={styles.comparisonItem}>
               <Text style={[styles.comparisonLabel, { color: isDark ? colors.textSecondaryDark : colors.textSecondary }]}>
                 Change
-              </Text>
+          </Text>
               <View style={styles.trendContainer}>
                 {getTrendIcon(monthlyUsage.percentChange)}
                 <Text style={[
@@ -214,12 +214,12 @@ export default function AnalyticsScreen() {
                   { color: monthlyUsage.percentChange < 0 ? colors.success : colors.error }
                 ]}>
                   {Math.abs(monthlyUsage.percentChange)}%
-                </Text>
+          </Text>
               </View>
             </View>
-          </View>
         </View>
-      </ScrollView>
+      </View>
+    </ScrollView>
     </View>
   );
 }

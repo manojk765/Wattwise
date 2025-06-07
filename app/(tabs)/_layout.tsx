@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import { Home, Lightbulb, Brain, ChartBar as BarChart3, Medal, User, Camera, PlusCircle, Settings } from 'lucide-react-native';
+import { Home, BarChart3, Calendar, Lightbulb, Brain, Medal, User } from 'lucide-react-native';
 import { colors } from '@/constants/colors';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -50,70 +50,45 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="analytics"
+        options={{
+          title: 'Analytics',
+          tabBarIcon: ({ color }) => <BarChart3 size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="usage"
         options={{
-          title: 'Usage',
-          tabBarIcon: ({ color }) => <BarChart3 size={24} color={color} />,
+          title: 'Daily Usage',
+          tabBarIcon: ({ color }) => <Calendar size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="appliances"
         options={{
           title: 'Appliances',
-          tabBarIcon: ({ color }) => <PlusCircle size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Lightbulb size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="wattbot"
         options={{
           title: 'WattBot',
-          tabBarIcon: ({ color, size }: TabBarIconProps) => (
-            <Brain size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="analytics"
-        options={{
-          title: 'Analytics',
-          tabBarIcon: ({ color, size }: TabBarIconProps) => (
-            <BarChart3 size={size} color={color} />
-          ),
+          tabBarIcon: ({ color }) => <Brain size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="leaderboard"
         options={{
           title: 'Leaderboard',
-          tabBarIcon: ({ color, size }: TabBarIconProps) => (
-            <Medal size={size} color={color} />
-          ),
+          tabBarIcon: ({ color }) => <Medal size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }: TabBarIconProps) => (
-            <User size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="scan-bill"
-        options={{
-          title: 'Scan Bill',
-          tabBarIcon: ({ color, size }: TabBarIconProps) => (
-            <Camera size={size} color={color} />
-          ),
-          href: null, // Hide from tab bar
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color }) => <Settings size={24} color={color} />,
+          tabBarIcon: ({ color }) => <User size={24} color={color} />,
         }}
       />
     </Tabs>

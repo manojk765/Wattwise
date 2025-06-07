@@ -48,7 +48,7 @@ export default function SupportScreen() {
           <View style={styles.contactOptions}>
             <TouchableOpacity 
               style={[styles.contactButton, { backgroundColor: isDark ? colors.cardDark : colors.card }]}
-              onPress={() => router.push('/chat')}
+              onPress={() => router.push('/wattbot')}
             >
               <MessageCircle size={24} color={colors.primary} />
               <Text style={[styles.contactButtonText, { color: isDark ? colors.textDark : colors.text }]}>
@@ -57,7 +57,6 @@ export default function SupportScreen() {
             </TouchableOpacity>
             <TouchableOpacity 
               style={[styles.contactButton, { backgroundColor: isDark ? colors.cardDark : colors.card }]}
-              onPress={() => router.push('/email-support')}
             >
               <Mail size={24} color={colors.primary} />
               <Text style={[styles.contactButtonText, { color: isDark ? colors.textDark : colors.text }]}>
@@ -72,10 +71,10 @@ export default function SupportScreen() {
             Frequently Asked Questions
           </Text>
           {faqs.map((faq, index) => (
-            <View 
-              key={index} 
+            <View
+              testID={`faq-item-${index}`}
               style={[
-                styles.faqItem, 
+                styles.faqItem,
                 { backgroundColor: isDark ? colors.cardDark : colors.card }
               ]}
             >

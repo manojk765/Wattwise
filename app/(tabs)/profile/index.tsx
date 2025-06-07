@@ -40,9 +40,8 @@ export default function ProfileScreen() {
 
   const handleLogout = async () => {
     try {
-      console.log('Logout confirmed');
+      hideLogoutModal();
       await logout();
-      console.log('Logout successful');
       router.replace('/(onboarding)');
     } catch (error) {
       console.error('Logout error:', error);

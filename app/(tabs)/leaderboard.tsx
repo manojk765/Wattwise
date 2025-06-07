@@ -129,7 +129,7 @@ export default function LeaderboardScreen() {
             }
             
             return (
-              <View key={item.id} style={[styles.podiumItem, containerStyle]}>
+              <View key={`podium-${item.id}`} style={[styles.podiumItem, containerStyle]}>
                 <View style={[styles.crownContainer, { backgroundColor: crownColor }]}>
                   <Text style={styles.crownText}>{index + 1}</Text>
                 </View>

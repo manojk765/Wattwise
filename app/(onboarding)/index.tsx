@@ -5,23 +5,51 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ChevronRight, Zap, Leaf, Award } from 'lucide-react-native';
 import { colors } from '@/constants/colors';
 
+interface FeatureItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  key?: string;
+}
+
+const FeatureItem = React.memo(({ icon, title, description }: FeatureItemProps) => (
+  <View style={styles.featureItem}>
+    <View style={styles.iconContainer}>{icon}</View>
+    <View style={styles.featureTextContainer}>
+      <Text style={styles.featureTitle}>{title}</Text>
+      <Text style={styles.featureDescription}>{description}</Text>
+    </View>
+  </View>
+));
+
 const features = [
   {
+    id: 'track',
     icon: <Zap size={24} color={colors.primary} />,
     title: 'Track Energy',
     description: 'Monitor your energy usage in real-time',
   },
   {
+    id: 'save',
     icon: <Leaf size={24} color={colors.primary} />,
     title: 'Save Money',
     description: 'Get AI-powered tips to reduce consumption',
   },
   {
+    id: 'earn',
     icon: <Award size={24} color={colors.primary} />,
     title: 'Earn Rewards',
     description: 'Complete challenges and climb leaderboards',
   },
 ];
+
+const FeatureItemWrapper = ({ feature }: { feature: typeof features[0] }) => (
+  <FeatureItem
+    icon={feature.icon}
+    title={feature.title}
+    description={feature.description}
+  />
+);
 
 export default function Onboarding() {
   return (
@@ -41,14 +69,13 @@ export default function Onboarding() {
       </View>
 
       <View style={styles.featuresContainer}>
-        {features.map((feature, index) => (
-          <View key={index} style={styles.featureItem}>
-            <View style={styles.iconContainer}>{feature.icon}</View>
-            <View style={styles.featureTextContainer}>
-              <Text style={styles.featureTitle}>{feature.title}</Text>
-              <Text style={styles.featureDescription}>{feature.description}</Text>
-            </View>
-          </View>
+        {features.map((feature) => (
+          <FeatureItem
+            key={feature.id}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
         ))}
       </View>
 

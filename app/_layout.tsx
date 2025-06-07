@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
@@ -39,15 +39,17 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <DataProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <ThemedStatusBar />
+    <AuthProvider children={undefined}>
+      <ThemeProvider children={undefined}>
+        <DataProvider children={undefined}>
+          <React.Fragment>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <ThemedStatusBar />
+          </React.Fragment>
         </DataProvider>
       </ThemeProvider>
     </AuthProvider>

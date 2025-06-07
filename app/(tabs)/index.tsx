@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { 
   PanelTopOpen, 
@@ -22,6 +22,11 @@ import DashboardCard from '@/components/DashboardCard';
 import UsageChart from '@/components/UsageChart';
 import SavingsTip from '@/components/SavingsTip';
 import Header from '@/components/Header';
+
+// Get screen dimensions
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const CARD_PADDING = 16;
+const CARD_MARGIN = 8;
 
 // Define interfaces for our data
 interface UsageData {
@@ -82,11 +87,6 @@ export default function HomeScreen() {
       onPress: () => router.push('/appliances/add'),
     },
     {
-      name: 'Scan Bill',
-      icon: <Camera size={24} color={colors.primary} />,
-      onPress: () => router.push('/scan-bill'),
-    },
-    {
       name: 'Get Tips',
       icon: <Brain size={24} color={colors.primary} />,
       onPress: () => router.push('/wattbot'),
@@ -100,6 +100,7 @@ export default function HomeScreen() {
         { backgroundColor: isDark ? colors.backgroundDark : colors.background }
       ]}
       showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.scrollContent}
     >
       <Header title="Dashboard" icon={<PanelTopOpen size={24} color={colors.primary} />} />
       
@@ -120,13 +121,21 @@ export default function HomeScreen() {
               Today's Usage
             </Text>
           </View>
-          <TouchableOpacity style={styles.viewAllButton} onPress={() => router.push('/analytics')}>
+          <TouchableOpacity 
+            style={styles.viewAllButton} 
+            onPress={() => router.push('/analytics')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
             <Text style={styles.viewAllText}>Details</Text>
             <ChevronRight size={16} color={colors.primary} />
           </TouchableOpacity>
         </View>
 
-        <View style={styles.cards}>
+        <ScrollView 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.cardsScrollContent}
+        >
           <DashboardCard
             title="Energy Used"
             value={todayUsage.kwh.toFixed(1)}
@@ -148,7 +157,7 @@ export default function HomeScreen() {
             icon={<CloudOff size={20} color={colors.primary} />}
             percentChange={-15}
           />
-        </View>
+        </ScrollView>
       </View>
 
       <View style={styles.chartSection}>
@@ -159,7 +168,10 @@ export default function HomeScreen() {
               Monthly Overview
             </Text>
           </View>
-          <View style={styles.changeContainer}>
+          <View style={[
+            styles.changeContainer,
+            { backgroundColor: monthlyUsage.percentChange < 0 ? 'rgba(76, 175, 80, 0.1)' : 'rgba(244, 67, 54, 0.1)' }
+          ]}>
             <TrendingDown size={16} color={monthlyUsage.percentChange < 0 ? colors.success : colors.error} />
             <Text
               style={[
@@ -187,6 +199,7 @@ export default function HomeScreen() {
                 { backgroundColor: isDark ? colors.cardDark : colors.card }
               ]}
               onPress={action.onPress}
+              activeOpacity={0.7}
             >
               <View style={styles.actionIcon}>{action.icon}</View>
               <Text style={[styles.actionText, { color: isDark ? colors.textDark : colors.text }]}>
@@ -205,7 +218,11 @@ export default function HomeScreen() {
               Energy Saving Tips
             </Text>
           </View>
-          <TouchableOpacity style={styles.viewAllButton} onPress={() => router.push('/wattbot')}>
+          <TouchableOpacity 
+            style={styles.viewAllButton} 
+            onPress={() => router.push('/wattbot')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
             <Text style={styles.viewAllText}>View All</Text>
             <ChevronRight size={16} color={colors.primary} />
           </TouchableOpacity>
@@ -213,7 +230,7 @@ export default function HomeScreen() {
         
         <View style={styles.tipsList}>
           {tips.map((tip, index) => (
-            <SavingsTip key={index} tip={tip} isDark={isDark} />
+            <SavingsTip key={tip.id} tip={tip} isDark={isDark} />
           ))}
         </View>
       </View>
@@ -224,22 +241,26 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
+  },
+  scrollContent: {
+    paddingHorizontal: CARD_PADDING,
+    paddingBottom: 120,
   },
   welcomeSection: {
-    marginBottom: 20,
+    marginTop: 16,
+    marginBottom: 24,
   },
   greeting: {
-    fontSize: 24,
+    fontSize: 28,
     fontFamily: 'Inter-Bold',
+    marginBottom: 4,
   },
   date: {
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: 'Inter-Regular',
-    marginTop: 4,
   },
   statsContainer: {
-    marginBottom: 24,
+    marginBottom: 32,
   },
   statsHeader: {
     flexDirection: 'row',
@@ -252,22 +273,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statsHeading: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
     marginLeft: 8,
   },
   viewAllButton: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: 8,
   },
   viewAllText: {
-    fontSize: 14,
+    fontSize: 15,
     color: colors.primary,
-    fontWeight: '500',
+    fontWeight: '600',
+    marginRight: 4,
   },
-  cards: {
-    flexDirection: 'row',
-    marginHorizontal: -6,
+  cardsScrollContent: {
+    paddingHorizontal: CARD_MARGIN,
   },
   chartSection: {
     marginBottom: 32,
@@ -283,21 +305,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sectionHeading: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
     marginLeft: 8,
   },
   changeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(76, 175, 80, 0.1)',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
   },
   changeText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 13,
+    fontWeight: '600',
     marginLeft: 4,
   },
   quickActionsSection: {
@@ -306,25 +327,32 @@ const styles = StyleSheet.create({
   quickActions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginTop: 16,
+    gap: 12,
   },
   actionButton: {
-    width: '31%',
+    flex: 1,
     paddingVertical: 20,
     borderRadius: 16,
     alignItems: 'center',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   actionIcon: {
-    marginBottom: 8,
+    marginBottom: 12,
   },
   actionText: {
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: 15,
+    fontWeight: '600',
   },
   tipsSection: {
-    marginBottom: 120,
+    marginBottom: 32,
   },
   tipsList: {
-    marginTop: 8,
+    marginTop: 12,
+    gap: 12,
   },
 });

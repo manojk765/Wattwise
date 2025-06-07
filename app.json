@@ -7,10 +7,8 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "jsEngine": "hermes",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
     "web": {
       "bundler": "metro",
       "output": "single",
@@ -26,8 +24,12 @@
     },
     "extra": {
       "eas": {
-        "projectId": "18029aba-07bc-435d-979e-7cba1bab41ec"
-      }
+        "projectId": "94949d65-1f11-43ac-afa2-667845debfdb"
+      },
+      "expoConfig": {}
+    },
+    "android": {
+      "package": "com.manojkoneti.greenenergyapp"
     }
   }
 }

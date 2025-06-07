@@ -1,0 +1,48 @@
+{
+  "cli": {
+    "version": ">= 16.6.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCfByP0DsNYA9DAlgn1YcCQy667GufIiJY",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "wattwise-895fd.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "wattwise-895fd",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "wattwise-895fd.firebasestorage.app",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "92311260033",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:92311260033:web:af4e4375d4a9a2635bb680"
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCfByP0DsNYA9DAlgn1YcCQy667GufIiJY",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "wattwise-895fd.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "wattwise-895fd",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "wattwise-895fd.firebasestorage.app",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "92311260033",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:92311260033:web:af4e4375d4a9a2635bb680"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_FIREBASE_API_KEY": "AIzaSyCfByP0DsNYA9DAlgn1YcCQy667GufIiJY",
+        "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN": "wattwise-895fd.firebaseapp.com",
+        "EXPO_PUBLIC_FIREBASE_PROJECT_ID": "wattwise-895fd",
+        "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET": "wattwise-895fd.firebasestorage.app",
+        "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "92311260033",
+        "EXPO_PUBLIC_FIREBASE_APP_ID": "1:92311260033:web:af4e4375d4a9a2635bb680"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
