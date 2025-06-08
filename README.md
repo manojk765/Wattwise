@@ -116,7 +116,7 @@ GEMINI_API_KEY=your_gemini_api_key
 ### Installation Options
 
 #### Option 1: Direct APK Installation
-1. Download the latest APK from the [releases section](https://github.com/yourusername/wattwise/releases)
+1. Download the latest APK from the link provided[click_here](https://1drv.ms/u/c/237c845962d07dc1/ET-XZfkFSbROmOym2eArPdUBDllCc6xS_gC3vVbhXllNYA?e=BNnfXb)
 2. Enable "Install from Unknown Sources" in your Android device settings
 3. Install the APK file on your Android device
 
