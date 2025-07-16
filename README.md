@@ -53,7 +53,7 @@ Our team is passionate about creating technology solutions that promote sustaina
   - Modern UI/UX principles
 
 ## 📱 Screenshots
-[Add screenshots of your app here]
+[Screenshots of app to be added]
 
 ## 🚀 Getting Started
 
