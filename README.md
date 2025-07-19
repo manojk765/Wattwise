@@ -53,7 +53,12 @@ Our team is passionate about creating technology solutions that promote sustaina
   - Modern UI/UX principles
 
 ## 📱 Screenshots
-[Screenshots of app to be added]
+![Wattwise Landing](https://github.com/user-attachments/assets/d480691b-5fcc-4882-9b49-716a2ea08c33)
+![Wattwise Dashboard](https://github.com/user-attachments/assets/a690c728-a4c0-4c04-aa99-101535f4c42a)
+![Wattwise Analytics](ht![Wattwise Leaderboard](https://github.com/user-attachments/assets/5028db8a-4e7c-46f6-9aa5-808f569f2040)
+![Wattwise Usage](https://github.com/user-attachments/assets/1f9ae51a-2506-4351-a101-437827b8cefc)
+![Wattwise WattBot](https://github.com/user-attachments/assets/68cfc511-db71-44c4-b735-c17d068fc468)
+![Wattwise Leaderboard](https://github.com/user-attachments/assets/65faf57c-66a8-41ad-a41d-607068b7612e)
 
 ## 🚀 Getting Started
 
